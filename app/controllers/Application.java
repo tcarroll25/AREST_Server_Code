@@ -8,29 +8,52 @@ import views.html.*;
 
 public class Application extends Controller {
 
-    static Form<Task> taskForm = Form.form(Task.class);
+    static Form<User> userForm = Form.form(User.class);
+    static Form<Report> reportForm = Form.form(Report.class);
 
+    /* Redirect to Users */
     public static Result index() {
-        return redirect(routes.Application.tasks());
+        return redirect(routes.Application.users());
     }
 
-    public static Result tasks() {
-        return ok(views.html.index.render(Task.all(), taskForm));
+    /* User functions */
+    public static Result users() {
+        return ok(views.html.user.render(User.all(), userForm));
     }
 
-    public static Result newTask() {
-        Form<Task> filledForm = taskForm.bindFromRequest();
+    public static Result newUser() {
+        Form<User> filledForm = userForm.bindFromRequest();
         if (filledForm.hasErrors()) {
-            return badRequest(views.html.index.render(Task.all(), filledForm));
+            return badRequest(views.html.user.render(User.all(), filledForm));
         } else {
-            Task.create(filledForm.get());
-            return redirect(routes.Application.tasks());
+            User.create(filledForm.get());
+            return redirect(routes.Application.users());
         }
     }
 
-    public static Result deleteTask(Long id) {
-        Task.delete(id);
-        return redirect(routes.Application.tasks());
+    public static Result deleteUser(Long id) {
+        User.delete(id);
+        return redirect(routes.Application.users());
+    }
+
+    /* Report functions */
+    public static Result reports() {
+        return ok(views.html.report.render(Report.all(), reportForm));
+    }
+
+    public static Result newReport() {
+        Form<Report> filledForm = reportForm.bindFromRequest();
+        if (filledForm.hasErrors()) {
+            return badRequest(views.html.report.render(Report.all(), filledForm));
+        } else {
+            Report.create(filledForm.get());
+            return redirect(routes.Application.reports());
+        }
+    }
+
+    public static Result deleteReport(Long id) {
+        Report.delete(id);
+        return redirect(routes.Application.reports());
     }
 }
 
