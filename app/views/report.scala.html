@@ -10,11 +10,6 @@
         @for(report <- reports) {
             <li>
                 <h2>Reporter</h2>
-                <p>Name: </p>@report.reporter.info.firstName @report.reporter.info.lastName<br>
-                <p>Addr: </p>@report.reporter.info.address<br>
-                <p>Phone: </p>@report.reporter.info.phoneNumber<br>
-                <p>Mandated?: </p>@report.reporter.mandatedBool<br>
-                <p>Relationship to Victim: </p>@report.reporter.relationshipToVictim<br>
                 <h2>Report</h2>
                 <p>Type of Abuse: </p>@report.typeOfAbuse<br>
                 <p>Description: </p>@report.description<br>
@@ -30,12 +25,6 @@
 
     @form(routes.Application.newReport()) {
 
-        @inputText(reportForm("reporter.info.firstName"))
-        @inputText(reportForm("reporter.info.lastName"))
-        @inputText(reportForm("reporter.info.address"))
-        @inputText(reportForm("reporter.info.phoneNumber"))
-        @inputText(reportForm("reporter.mandatedBool"))
-        @inputText(reportForm("reporter.relationshipToVictim"))
         @inputText(reportForm("typeOfAbuse"))
         @inputText(reportForm("description"))
 

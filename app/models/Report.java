@@ -12,10 +12,25 @@ public class Report extends Model {
 
     @Id
     public Long id;
-    public Reporter reporter = new Reporter();
+    
+    /* Scala view code
+                <p>Name: </p>@report.reporter.info.firstName @report.reporter.info.lastName<br>
+                <p>Addr: </p>@report.reporter.info.address<br>
+                <p>Phone: </p>@report.reporter.info.phoneNumber<br>
+                <p>Mandated?: </p>@report.reporter.mandatedBool<br>
+                <p>Relationship to Victim: </p>@report.reporter.relationshipToVictim<br>
+        @inputText(reportForm("reporter.info.firstName"))
+        @inputText(reportForm("reporter.info.lastName"))
+        @inputText(reportForm("reporter.info.address"))
+        @inputText(reportForm("reporter.info.phoneNumber"))
+        @inputText(reportForm("reporter.mandatedBool"))
+        @inputText(reportForm("reporter.relationshipToVictim"))
+     */
+    
+    /*public Reporter reporter = new Reporter();
     public Victim victim = new Victim();
     public Abuser abuser = new Abuser();
-    public Guardian guardin = new Guardian();
+    public Guardian guardian = new Guardian();*/
 
     /* Information */
     @Required
