@@ -5,9 +5,11 @@ import play.data.validation.Constraints.*;
 import play.db.ebean.*;
 import javax.persistence.*;
 
-@Entity
-public class PersonInfo extends Model {
+@MappedSuperclass
+public abstract class PersonInfo extends Model {
 
+    @Id
+    public Long id;
     @Required
     public String firstName;
     @Required

@@ -6,10 +6,8 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 @Entity
-public class Victim extends Model {
+public class Victim extends PersonInfo {
 
-    /* Reporter */
-    public PersonInfo info = new PersonInfo();
     @Required
     public String sex;
     @Required

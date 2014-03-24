@@ -13,6 +13,11 @@
                 <h2>Report</h2>
                 <p>Type of Abuse: </p>@report.typeOfAbuse<br>
                 <p>Description: </p>@report.description<br>
+                <p>Name: </p>@report.reporter.firstName @report.reporter.lastName<br>
+                <p>Addr: </p>@report.reporter.address<br>
+                <p>Phone: </p>@report.reporter.phoneNumber<br>
+                <p>Mandated?: </p>@report.reporter.mandatedBool<br>
+                <p>Relationship to Victim: </p>@report.reporter.relationshipToVictim<br>
 
                 @form(routes.Application.deleteReport(report.id)) {
                     <input type="submit" value="Delete">
@@ -27,6 +32,12 @@
 
         @inputText(reportForm("typeOfAbuse"))
         @inputText(reportForm("description"))
+        @inputText(reportForm("reporter.firstName"))
+        @inputText(reportForm("reporter.lastName"))
+        @inputText(reportForm("reporter.address"))
+        @inputText(reportForm("reporter.phoneNumber"))
+        @inputText(reportForm("reporter.mandatedBool"))
+        @inputText(reportForm("reporter.relationshipToVictim"))
 
         <input type="submit" value="Create">
 

@@ -6,10 +6,9 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 @Entity
-public class Reporter extends Model {
+public class Reporter extends PersonInfo {
 
     /* Reporter */
-    public PersonInfo info = new PersonInfo();
     @Required
     public String mandatedBool;
     @Required

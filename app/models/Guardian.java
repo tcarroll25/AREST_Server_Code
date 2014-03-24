@@ -6,10 +6,8 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 @Entity
-public class Guardian extends Model {
+public class Guardian extends PersonInfo {
 
-    /* Reporter */
-    public PersonInfo info = new PersonInfo();
     @Required
     public String relationshipToVictim;
 
