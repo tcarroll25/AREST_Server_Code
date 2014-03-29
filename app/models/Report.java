@@ -42,4 +42,8 @@ public class Report extends Model {
         find.ref(id).delete();
     }
 
+    public static Report get(Long id) {
+        return find.ref(id);
+    }
+
 }

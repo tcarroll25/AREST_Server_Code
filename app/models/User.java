@@ -37,4 +37,8 @@ public class User extends Model {
         find.ref(id).delete();
     }
 
+    public static User get(Long id) {
+        return find.ref(id);
+    }
+
 }

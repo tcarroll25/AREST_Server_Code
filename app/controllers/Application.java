@@ -2,9 +2,14 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import play.api.templates.BufferedContent;
+import play.api.templates.Html;
 import play.data.*;
 import models.*;
 import views.html.*;
+import play.libs.Json;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Application extends Controller {
 
@@ -30,7 +35,18 @@ public class Application extends Controller {
             return redirect(routes.Application.users());
         }
     }
-
+    
+    public static Result createUser() {
+        JsonNode json = request().body().asJson();
+        User.create(Json.fromJson(json, User.class));
+        return ok();
+    }
+    
+   public static Result getUser(Long id) {
+    	return(ok(Json.toJson(User.get(id))));
+    }
+    
+    
     public static Result deleteUser(Long id) {
         User.delete(id);
         return redirect(routes.Application.users());
@@ -49,6 +65,10 @@ public class Application extends Controller {
             Report.create(filledForm.get());
             return redirect(routes.Application.reports());
         }
+    }
+    
+   public static Result getReport(Long id) {
+    	return(ok(Json.toJson(Report.get(id))));
     }
 
     public static Result deleteReport(Long id) {
