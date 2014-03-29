@@ -46,6 +46,19 @@ public class Application extends Controller {
     	return(ok(Json.toJson(UserContainer.get(id))));
     }
     
+   public static Result getByUserName(String name) {
+    	return(ok(Json.toJson(UserContainer.getByUserName(name))));
+    }
+    
+   public static Result checkPassword() {
+        JsonNode json = request().body().asJson();
+        if (Json.fromJson(json, UserContainer.class).password.equals( 
+        		UserContainer.getByUserName(Json.fromJson(json, UserContainer.class).userName).password)) {
+        	return ok();
+        } else {
+        	return notFound();
+        }
+    }
     
     public static Result deleteUser(Long id) {
         UserContainer.delete(id);

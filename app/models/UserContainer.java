@@ -8,7 +8,12 @@ import javax.persistence.*;
 @Entity
 public class UserContainer extends Model {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     public Long id;
 
     @Required
@@ -26,10 +31,10 @@ public class UserContainer extends Model {
     @Required
     public boolean isSupervisor;
 
-    public Long password;
+    public String password;
     public int salt;
 
-    public static Finder<Long,UserContainer> find = new Finder(Long.class, UserContainer.class);
+    public static Finder<Long,UserContainer> find = new Finder<Long, UserContainer>(Long.class, UserContainer.class);
 
     public static List<UserContainer> all() {
         return find.all();
@@ -45,6 +50,10 @@ public class UserContainer extends Model {
 
     public static UserContainer get(Long id) {
         return find.ref(id);
+    }
+
+    public static UserContainer getByUserName(String userName) {
+        return find.where().eq("userName", userName).findUnique();
     }
 
 }

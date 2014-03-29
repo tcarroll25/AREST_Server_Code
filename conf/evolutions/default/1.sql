@@ -54,7 +54,7 @@ create table user_container (
   last_name                 varchar(255),
   email                     varchar(255),
   is_supervisor             boolean,
-  password                  bigint,
+  password                  varchar(255),
   salt                      integer,
   constraint pk_user_container primary key (id))
 ;

@@ -9,7 +9,9 @@ GET     /                           controllers.Application.index()
 GET     /user                       controllers.Application.users()
 POST    /user                       controllers.Application.newUser()
 POST    /user/:id/delete            controllers.Application.deleteUser(id: Long)
-GET     /user/:id/get               controllers.Application.getUser(id: Long)
+#GET     /user/:id/get              controllers.Application.getUser(id: Long)
+GET     /user/:name/get             controllers.Application.getByUserName(name: String)
+POST    /user/password              controllers.Application.checkPassword()
 POST    /user/create                controllers.Application.createUser()
 
 # Report
