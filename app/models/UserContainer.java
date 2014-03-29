@@ -6,10 +6,13 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 @Entity
-public class User extends Model {
+public class UserContainer extends Model {
 
     @Id
     public Long id;
+
+    @Required
+    public String userName;
 
     @Required
     public String firstName;
@@ -20,16 +23,19 @@ public class User extends Model {
     @Required
     public String email;
 
+    @Required
+    public boolean isSupervisor;
+
     public Long password;
     public int salt;
 
-    public static Finder<Long,User> find = new Finder(Long.class, User.class);
+    public static Finder<Long,UserContainer> find = new Finder(Long.class, UserContainer.class);
 
-    public static List<User> all() {
+    public static List<UserContainer> all() {
         return find.all();
     }
 
-    public static void create(User user) {
+    public static void create(UserContainer user) {
         user.save();
     }
 
@@ -37,7 +43,7 @@ public class User extends Model {
         find.ref(id).delete();
     }
 
-    public static User get(Long id) {
+    public static UserContainer get(Long id) {
         return find.ref(id);
     }
 

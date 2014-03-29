@@ -47,14 +47,16 @@ create table reporter (
   constraint pk_reporter primary key (id))
 ;
 
-create table user (
+create table user_container (
   id                        bigint not null,
+  user_name                 varchar(255),
   first_name                varchar(255),
   last_name                 varchar(255),
   email                     varchar(255),
+  is_supervisor             boolean,
   password                  bigint,
   salt                      integer,
-  constraint pk_user primary key (id))
+  constraint pk_user_container primary key (id))
 ;
 
 create table victim (
@@ -84,7 +86,7 @@ create sequence report_seq;
 
 create sequence reporter_seq;
 
-create sequence user_seq;
+create sequence user_container_seq;
 
 create sequence victim_seq;
 
@@ -111,7 +113,7 @@ drop table if exists report;
 
 drop table if exists reporter;
 
-drop table if exists user;
+drop table if exists user_container;
 
 drop table if exists victim;
 
@@ -125,7 +127,7 @@ drop sequence if exists report_seq;
 
 drop sequence if exists reporter_seq;
 
-drop sequence if exists user_seq;
+drop sequence if exists user_container_seq;
 
 drop sequence if exists victim_seq;
 

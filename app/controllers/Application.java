@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Application extends Controller {
 
-    static Form<User> userForm = Form.form(User.class);
+    static Form<UserContainer> userForm = Form.form(UserContainer.class);
     static Form<Report> reportForm = Form.form(Report.class);
 
     /* Redirect to Users */
@@ -23,32 +23,32 @@ public class Application extends Controller {
 
     /* User functions */
     public static Result users() {
-        return ok(views.html.user.render(User.all(), userForm));
+        return ok(views.html.user.render(UserContainer.all(), userForm));
     }
 
     public static Result newUser() {
-        Form<User> filledForm = userForm.bindFromRequest();
+        Form<UserContainer> filledForm = userForm.bindFromRequest();
         if (filledForm.hasErrors()) {
-            return badRequest(views.html.user.render(User.all(), filledForm));
+            return badRequest(views.html.user.render(UserContainer.all(), filledForm));
         } else {
-            User.create(filledForm.get());
+            UserContainer.create(filledForm.get());
             return redirect(routes.Application.users());
         }
     }
     
     public static Result createUser() {
         JsonNode json = request().body().asJson();
-        User.create(Json.fromJson(json, User.class));
+        UserContainer.create(Json.fromJson(json, UserContainer.class));
         return ok();
     }
     
    public static Result getUser(Long id) {
-    	return(ok(Json.toJson(User.get(id))));
+    	return(ok(Json.toJson(UserContainer.get(id))));
     }
     
     
     public static Result deleteUser(Long id) {
-        User.delete(id);
+        UserContainer.delete(id);
         return redirect(routes.Application.users());
     }
 

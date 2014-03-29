@@ -1,4 +1,4 @@
-@(users: List[User], userForm: Form[User])
+@(users: List[UserContainer], userForm: Form[UserContainer])
 
 @import helper._
 
@@ -10,10 +10,13 @@
         @for(user <- users) {
             <li>
                 @user.id
+                @user.userName
                 @user.firstName
                 @user.lastName
                 <br>
                 @user.email
+                <br>
+                @user.isSupervisor
 
                 @form(routes.Application.deleteUser(user.id)) {
                     <input type="submit" value="Delete">
@@ -26,9 +29,11 @@
 
     @form(routes.Application.newUser()) {
 
+        @inputText(userForm("userName"))
         @inputText(userForm("firstName"))
         @inputText(userForm("lastName"))
         @inputText(userForm("email"))
+        @inputText(userForm("isSupervisor"))
 
         <input type="submit" value="Create">
 
