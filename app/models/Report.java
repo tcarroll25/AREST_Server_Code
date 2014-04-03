@@ -13,12 +13,16 @@ public class Report extends Model {
     @Id
     public Long id;
     
+    @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Reporter reporter;
+    @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Victim victim;
+    @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Abuser abuser;
+    @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Guardian guardian;
 

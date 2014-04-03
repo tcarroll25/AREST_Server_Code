@@ -9,16 +9,40 @@
     <ul>
         @for(report <- reports) {
             <li>
-            	<h2>ID: @report.id</h2>
-                <h2>Reporter</h2>
-                <h2>Report</h2>
-                <p>Type of Abuse: </p>@report.typeOfAbuse<br>
-                <p>Description: </p>@report.description<br>
-                <p>Name: </p>@report.reporter.firstName @report.reporter.lastName<br>
-                <p>Addr: </p>@report.reporter.address<br>
-                <p>Phone: </p>@report.reporter.phoneNumber<br>
-                <p>Mandated?: </p>@report.reporter.mandatedBool<br>
-                <p>Relationship to Victim: </p>@report.reporter.relationshipToVictim<br>
+            	<h2>Report ID: @report.id</h2>
+                <p>Type of Abuse: @report.typeOfAbuse Description: @report.description</p>
+                <h4>Reporter</h4>
+                <p>Name: @report.reporter.firstName @report.reporter.lastName,
+                Addr: @report.reporter.address,
+                Phone: @report.reporter.phoneNumber,
+                Mandated?: @report.reporter.mandatedBool,
+                Relationship to Victim: @report.reporter.relationshipToVictim</p>
+                <h4>Victim</h4>
+                <p>Name: @report.victim.firstName @report.victim.lastName,
+                Addr: @report.victim.address,
+                Phone: @report.victim.phoneNumber,
+                Sex: @report.victim.sex,
+                DOB: @report.victim.dob,
+                Age: @report.victim.age,
+                Marital Status: @report.victim.maritalStatus,
+                Disability: @report.victim.disability,
+                Communication Needs: @report.victim.communicationNeeds,
+                Currently Served By: @report.victim.currentlyServedBy,
+                Type of Service: @report.victim.typeOfService,
+                Ethnicity: @report.victim.ethnicity,
+                Awareness of Report: @report.victim.awarenessOfReport</p>
+                <h4>Abuser</h4>
+                <p>Name: @report.abuser.firstName @report.abuser.lastName,
+                Addr: @report.abuser.address,
+                Phone: @report.abuser.phoneNumber,
+                Relationship to Victim: @report.abuser.relationshipToVictim,
+                Social: @report.abuser.social,
+                DOB: @report.abuser.dob</p>
+                <h4>Guardian</h4>
+                <p>Name: @report.guardian.firstName @report.guardian.lastName,
+                Addr: @report.guardian.address,
+                Phone: @report.guardian.phoneNumber,
+                Relationship to Victim: @report.guardian.relationshipToVictim</p>
 
                 @form(routes.Application.deleteReport(report.id)) {
                     <input type="submit" value="Delete">
@@ -39,6 +63,32 @@
         @inputText(reportForm("reporter.phoneNumber"))
         @inputText(reportForm("reporter.mandatedBool"))
         @inputText(reportForm("reporter.relationshipToVictim"))
+        @inputText(reportForm("victim.firstName"))
+        @inputText(reportForm("victim.lastName"))
+        @inputText(reportForm("victim.address"))
+        @inputText(reportForm("victim.phoneNumber"))
+        @inputText(reportForm("victim.sex"))
+        @inputText(reportForm("victim.dob"))
+        @inputText(reportForm("victim.age"))
+        @inputText(reportForm("victim.maritalStatus"))
+        @inputText(reportForm("victim.disability"))
+        @inputText(reportForm("victim.communicationNeeds"))
+        @inputText(reportForm("victim.currentlyServedBy"))
+        @inputText(reportForm("victim.typeOfService"))
+        @inputText(reportForm("victim.ethnicity"))
+        @inputText(reportForm("victim.awarenessOfReport"))
+        @inputText(reportForm("abuser.firstName"))
+        @inputText(reportForm("abuser.lastName"))
+        @inputText(reportForm("abuser.address"))
+        @inputText(reportForm("abuser.phoneNumber"))
+        @inputText(reportForm("abuser.relationshipToVictim"))
+        @inputText(reportForm("abuser.social"))
+        @inputText(reportForm("abuser.dob"))
+        @inputText(reportForm("guardian.firstName"))
+        @inputText(reportForm("guardian.lastName"))
+        @inputText(reportForm("guardian.address"))
+        @inputText(reportForm("guardian.phoneNumber"))
+        @inputText(reportForm("guardian.relationshipToVictim"))
 
         <input type="submit" value="Create">
 

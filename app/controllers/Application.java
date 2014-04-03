@@ -80,6 +80,12 @@ public class Application extends Controller {
         }
     }
     
+    public static Result createReport() {
+        JsonNode json = request().body().asJson();
+        Report.create(Json.fromJson(json, Report.class));
+        return ok();
+    }
+    
    public static Result getReport(Long id) {
     	return(ok(Json.toJson(Report.get(id))));
     }
