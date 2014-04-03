@@ -5,6 +5,10 @@ import play.data.validation.Constraints.*;
 import play.db.ebean.*;
 import javax.persistence.*;
 
+/**
+ * @author Tyler Carroll
+ *
+ */
 @Entity
 public class Abuser extends PersonInfo {
 

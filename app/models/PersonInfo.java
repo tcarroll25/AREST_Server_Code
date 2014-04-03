@@ -5,6 +5,10 @@ import play.data.validation.Constraints.*;
 import play.db.ebean.*;
 import javax.persistence.*;
 
+/**
+ * @author Tyler Carroll
+ *
+ */
 @MappedSuperclass
 public abstract class PersonInfo extends Model {
 
