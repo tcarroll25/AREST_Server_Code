@@ -59,6 +59,15 @@ public class Report extends Model {
     }
 
     /**
+     * Edit a user in database
+     * 
+     * @param user user to edit in database
+     */
+    public static void edit(Report report) {
+        report.update(report.id);
+    }
+
+    /**
      * Deletes a report by id from database
      * 
      * @param id id of report to delete in database
@@ -74,7 +83,7 @@ public class Report extends Model {
      * @return   returns report from database
      */
     public static Report get(Long id) {
-        return find.ref(id);
+        return find.byId(id);
     }
 
 }

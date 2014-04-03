@@ -61,11 +61,11 @@ public class UserContainer extends Model {
     }
 
     /**
-     * Update a user in database
+     * Edit a user in database
      * 
-     * @param user user to update in database
+     * @param user user to edit in database
      */
-    public static void update(UserContainer user) {
+    public static void edit(UserContainer user) {
         user.update(user.id);
     }
 
@@ -85,7 +85,7 @@ public class UserContainer extends Model {
      * @return   returns user from database
      */
     public static UserContainer get(Long id) {
-        return find.ref(id);
+        return find.byId(id);
     }
 
     /**

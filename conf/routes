@@ -22,6 +22,7 @@ POST    /report                     controllers.Application.newReport()
 POST    /report/:id/delete          controllers.Application.deleteReport(id: Long)
 GET     /report/:id/get             controllers.Application.getReport(id: Long)
 POST    /report/create              controllers.Application.createReport()
+POST    /report/edit                controllers.Application.editReport()
 
 
 # Map static resources from the /public folder to the /assets URL path

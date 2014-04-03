@@ -82,12 +82,17 @@ public class Application extends Controller {
     /**
      * Replace user with new information in database from JSON POST request from client
      * 
-     * @return 200 OK or 400 BAD REQUEST
+     * @return 200 OK
      */
     public static Result editUser() {
         JsonNode json = request().body().asJson();
-        UserContainer.update(Json.fromJson(json, UserContainer.class));
-        return ok();
+        Long id = Json.fromJson(json, UserContainer.class).id;
+        if (UserContainer.get(id) == null) {
+            return notFound();
+        } else {
+            UserContainer.edit(Json.fromJson(json, UserContainer.class));
+            return ok();
+        } 
     }
     
     /**
@@ -181,6 +186,22 @@ public class Application extends Controller {
         JsonNode json = request().body().asJson();
         Report.create(Json.fromJson(json, Report.class));
         return ok();
+    }
+    
+    /**
+     * Replace report with new information in database from JSON POST request from client
+     * 
+     * @return 200 OK or 400 BAD REQUEST
+     */
+    public static Result editReport() {
+        JsonNode json = request().body().asJson();
+        Long id = Json.fromJson(json, Report.class).id;
+        if (Report.get(id) == null) {
+            return notFound();
+        } else {
+            Report.edit(Json.fromJson(json, Report.class));
+            return ok();
+        } 
     }
     
     /**
