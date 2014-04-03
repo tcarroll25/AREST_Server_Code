@@ -114,6 +114,17 @@ public class Application extends Controller {
         UserContainer.delete(id);
         return redirect(routes.Application.users());
     }
+    
+    /**
+     * Delete user by username from database
+     * 
+     * @param name username of user to delete
+     * @return     200 OK
+     */
+    public static Result deleteByUserName(String name) {
+        UserContainer.deleteByUserName(name);
+        return ok();
+    }
 
     /* Report functions */
     /**

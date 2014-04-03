@@ -89,4 +89,13 @@ public class UserContainer extends Model {
         return find.where().eq("userName", userName).findUnique();
     }
 
+    /**
+     * Deletes a user by username from database
+     * 
+     * @param userName username of user to delete
+     */
+    public static void deleteByUserName(String userName) {
+        find.where().eq("userName", userName).findUnique().delete();
+    }
+
 }
