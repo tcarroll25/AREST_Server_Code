@@ -80,6 +80,17 @@ public class Application extends Controller {
     }
     
     /**
+     * Replace user with new information in database from JSON POST request from client
+     * 
+     * @return 200 OK or 400 BAD REQUEST
+     */
+    public static Result editUser() {
+        JsonNode json = request().body().asJson();
+        UserContainer.update(Json.fromJson(json, UserContainer.class));
+        return ok();
+    }
+    
+    /**
      * Gets user by id from database
      * 
      * @param id id of user to get from database

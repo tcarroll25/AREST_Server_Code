@@ -61,6 +61,15 @@ public class UserContainer extends Model {
     }
 
     /**
+     * Update a user in database
+     * 
+     * @param user user to update in database
+     */
+    public static void update(UserContainer user) {
+        user.update(user.id);
+    }
+
+    /**
      * Deletes a user by id from database
      * 
      * @param id id of user to delete in database

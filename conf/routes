@@ -14,6 +14,7 @@ POST    /user/:name/delete          controllers.Application.deleteByUserName(nam
 GET     /user/:name/get             controllers.Application.getByUserName(name: String)
 POST    /user/password              controllers.Application.checkPassword()
 POST    /user/create                controllers.Application.createUser()
+POST    /user/edit                  controllers.Application.editUser()
 
 # Report
 GET     /report                     controllers.Application.reports()
