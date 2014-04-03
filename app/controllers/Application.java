@@ -53,20 +53,30 @@ public class Application extends Controller {
         if (filledForm.hasErrors()) {
             return badRequest(views.html.user.render(UserContainer.all(), filledForm));
         } else {
-            UserContainer.create(filledForm.get());
-            return redirect(routes.Application.users());
+        	String name = filledForm.get().userName;
+            if (UserContainer.getByUserName(name) == null) {
+                UserContainer.create(filledForm.get());
+                return redirect(routes.Application.users());
+            } else {
+                return badRequest(views.html.user.render(UserContainer.all(), filledForm));
+            }
         }
     }
     
     /**
      * Creates new user in database from JSON POST request from client
      * 
-     * @return 200 OK
+     * @return 200 OK or 400 BAD REQUEST
      */
     public static Result createUser() {
         JsonNode json = request().body().asJson();
-        UserContainer.create(Json.fromJson(json, UserContainer.class));
-        return ok();
+        String name = Json.fromJson(json, UserContainer.class).userName;
+        if (UserContainer.getByUserName(name) == null) {
+            UserContainer.create(Json.fromJson(json, UserContainer.class));
+            return ok();
+        } else {
+        	return badRequest();
+        }
     }
     
     /**
