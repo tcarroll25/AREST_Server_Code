@@ -6,6 +6,8 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 /**
+ * Holds all the information for the user and creates, gets and deletes users to and from the database
+ * 
  * @author Tyler Carroll
  *
  */

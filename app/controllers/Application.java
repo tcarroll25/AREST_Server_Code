@@ -13,6 +13,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
 /**
+ * Main controller of the server. This class reacts to the actions performed on routes and
+ * interacts with the classes that create, get and delete information from the database
+ * 
  * @author Tyler Carroll
  *
  */

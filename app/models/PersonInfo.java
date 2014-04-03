@@ -6,6 +6,8 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 /**
+ * Holds standard information that is used by the abuser, guardian, reporter and victim classes
+ * 
  * @author Tyler Carroll
  *
  */

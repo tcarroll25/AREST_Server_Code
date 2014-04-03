@@ -8,6 +8,8 @@ import play.db.ebean.Model.Finder;
 import javax.persistence.*;
 
 /**
+ * Holds all the information for the report and creates, gets and deletes reports to and from the database
+ * 
  * @author Tyler Carroll
  *
  */

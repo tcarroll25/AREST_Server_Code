@@ -6,6 +6,8 @@ import play.db.ebean.*;
 import javax.persistence.*;
 
 /**
+ * Holds all the information for the guardian in a report
+ * 
  * @author Tyler Carroll
  *
  */
