@@ -59,9 +59,9 @@ public class Report extends Model {
     }
 
     /**
-     * Edit a user in database
+     * Edit a report in database
      * 
-     * @param user user to edit in database
+     * @param report report to edit in database
      */
     public static void edit(Report report) {
         report.update(report.id);
