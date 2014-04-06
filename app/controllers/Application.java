@@ -142,7 +142,7 @@ public class Application extends Controller {
      * @param id id of user to delete
      * @return   returns user page
      */
-    public static Result deleteUser(Long id) {
+    public static Result deleteUserById(Long id) {
         UserContainer.delete(id);
         return redirect(routes.Application.users());
     }
@@ -156,6 +156,22 @@ public class Application extends Controller {
     public static Result deleteByUserName(String name) {
         UserContainer.deleteByUserName(name);
         return ok();
+    }
+
+    /**
+     * Delete user by json data from database
+     * 
+     * @return 200 OK or 400 BAD REQUEST
+     */
+    public static Result deleteUser() {
+        JsonNode json = request().body().asJson();
+        String name = Json.fromJson(json, UserContainer.class).userName;
+        if (UserContainer.getByUserName(name) == null) {
+            return notFound();
+        } else {
+            UserContainer.deleteByUserName(name);
+            return ok();
+        } 
     }
 
     /* Report functions */

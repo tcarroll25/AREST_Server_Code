@@ -18,7 +18,7 @@
                 <br>
                 @user.isSupervisor
 
-                @form(routes.Application.deleteUser(user.id)) {
+                @form(routes.Application.deleteUserById(user.id)) {
                     <input type="submit" value="Delete">
                 }
             </li>
