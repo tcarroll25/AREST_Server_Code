@@ -31,6 +31,9 @@ create table report (
   victim_id                 bigint,
   abuser_id                 bigint,
   guardian_id               bigint,
+  username                  varchar(255),
+  state                     varchar(255),
+  status                    varchar(255),
   type_of_abuse             varchar(255),
   description               varchar(255),
   constraint pk_report primary key (id))
@@ -42,7 +45,7 @@ create table reporter (
   last_name                 varchar(255),
   address                   varchar(255),
   phone_number              varchar(255),
-  mandated_bool             varchar(255),
+  mandated_bool             boolean,
   relationship_to_victim    varchar(255),
   constraint pk_reporter primary key (id))
 ;
