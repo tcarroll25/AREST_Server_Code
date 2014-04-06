@@ -14,10 +14,19 @@ import javax.persistence.*;
 @Entity
 public class Abuser extends PersonInfo {
 
+    /**
+     * abuser's relationship to the victim
+     */
     @Required
     public String relationshipToVictim;
+    /**
+     * social security number of abuser
+     */
     @Required
     public String social;
+    /**
+     * date of birth of abuser
+     */
     @Required
     public String dob;
 

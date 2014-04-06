@@ -21,7 +21,13 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  */
 public class Application extends Controller {
 
+    /**
+     * form used to input user data from scala front end
+     */
     static Form<UserContainer> userForm = Form.form(UserContainer.class);
+    /**
+     * form used to input report data from scala front end
+     */
     static Form<Report> reportForm = Form.form(Report.class);
 
     /**

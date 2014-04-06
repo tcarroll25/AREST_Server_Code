@@ -15,8 +15,14 @@ import javax.persistence.*;
 public class Reporter extends PersonInfo {
 
     /* Reporter */
+    /**
+     * was this report mandated?
+     */
     @Required
-    public String mandatedBool;
+    public Boolean mandatedBool;
+    /**
+     * reporter's relationship to the victim
+     */
     @Required
     public String relationshipToVictim;
 

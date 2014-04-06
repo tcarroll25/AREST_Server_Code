@@ -14,6 +14,9 @@ import javax.persistence.*;
 @Entity
 public class Guardian extends PersonInfo {
 
+    /**
+     * guardian's relationship to the victim
+     */
     @Required
     public String relationshipToVictim;
 

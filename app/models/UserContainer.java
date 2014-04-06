@@ -19,27 +19,54 @@ public class UserContainer extends Model {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * ID of user in database
+	 */
 	@Id
     public Long id;
 
+    /**
+     * username of user
+     */
     @Required
     public String userName;
 
+    /**
+     * first name of user
+     */
     @Required
     public String firstName;
 
+    /**
+     * last name of user
+     */
     @Required
     public String lastName;
 
+    /**
+     * email address of user
+     */
     @Required
     public String email;
 
+    /**
+     * is this user a supervisor?
+     */
     @Required
     public boolean isSupervisor;
 
+    /**
+     * password of user
+     */
     public String password;
+    /**
+     * password salt
+     */
     public int salt;
 
+    /**
+     * finder used to find users in database
+     */
     public static Finder<Long,UserContainer> find = new Finder<Long, UserContainer>(Long.class, UserContainer.class);
 
     /**

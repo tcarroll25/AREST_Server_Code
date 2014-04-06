@@ -16,28 +16,67 @@ import javax.persistence.*;
 @Entity
 public class Report extends Model {
 
+    /**
+     * id of the report in the database
+     */
     @Id
     public Long id;
     
+    /**
+     * person who reported the abuse
+     */
     @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Reporter reporter;
+    /**
+     * victim of the abuse
+     */
     @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Victim victim;
+    /**
+     * person who committed the abuse
+     */
     @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Abuser abuser;
+    /**
+     * guardian of the victim
+     */
     @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Guardian guardian;
 
     /* Information */
+    /**
+     * username of person who filed the report
+     */
+    @Required
+    public String username;
+    /**
+     * current state of the report
+     */
+    @Required
+    public String state;
+    /**
+     * current status of the report
+     */
+    @Required
+    public String status;
+    /**
+     * type of abuse committed
+     */
     @Required
     public String typeOfAbuse;
+    /**
+     * description of the abuse commmitted
+     */
     @Required
     public String description;
 
+    /**
+     * finder to find abuse reports in database
+     */
     public static Finder<Long,Report> find = new Finder<Long, Report>(Long.class, Report.class);
 
     /**

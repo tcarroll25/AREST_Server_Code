@@ -14,14 +14,29 @@ import javax.persistence.*;
 @MappedSuperclass
 public abstract class PersonInfo extends Model {
 
+    /**
+     * id of person in database
+     */
     @Id
     public Long id;
+    /**
+     * first name of person
+     */
     @Required
     public String firstName;
+    /**
+     * last name of person
+     */
     @Required
     public String lastName;
+    /**
+     * address of person
+     */
     @Required
     public String address;
+    /**
+     * phone number of person
+     */
     @Required
     public String phoneNumber;
 
