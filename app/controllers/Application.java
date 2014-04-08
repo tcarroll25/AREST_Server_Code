@@ -122,12 +122,13 @@ public class Application extends Controller {
     }
     
    /**
-    * Gets user by username from database from GET
+    * Gets user by username from database from POST
     * 
-    * @param name username of user to get from database
     * @return     200 OK with JSON data of user or 400 BAD REQUEST
     */
-    public static Result getUser(String name) {
+    public static Result getUser() {
+        JsonNode json = request().body().asJson();
+        String name = Json.fromJson(json, UserContainer.class).userName;
         if (UserContainer.getByUserName(name) == null) {
         	return badRequest();
         } else {

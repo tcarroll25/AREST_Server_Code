@@ -8,14 +8,12 @@ GET     /                           controllers.Application.index()
 # User
 GET     /user                       controllers.Application.users()
 POST    /user                       controllers.Application.newUser()
-POST    /user/:id/deleteID          controllers.Application.deleteUserById(id: Long)
-POST    /user/:name/delete          controllers.Application.deleteByUserName(name: String)
-#GET     /user/:id/get              controllers.Application.getByUserId(id: Long)
-GET     /user/:name/get             controllers.Application.getUser(name: String)
 POST    /user/password              controllers.Application.checkPassword()
 POST    /user/create                controllers.Application.createUser()
 POST    /user/edit                  controllers.Application.editUser()
 POST    /user/delete                controllers.Application.deleteUser()
+POST    /user/get                   controllers.Application.getUser()
+POST    /user/:id/deleteID          controllers.Application.deleteUserById(id: Long)
 
 # Report
 GET     /report                     controllers.Application.reports()
