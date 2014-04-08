@@ -58,6 +58,7 @@ public class UserContainer extends Model {
     /**
      * password of user
      */
+    @Required
     public String password;
     /**
      * password salt

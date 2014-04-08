@@ -17,6 +17,8 @@
                 @user.email
                 <br>
                 @user.isSupervisor
+				<br>
+				pw: @user.password, salt: @user.salt
 
                 @form(routes.Application.deleteUserById(user.id)) {
                     <input type="submit" value="Delete">
@@ -34,6 +36,8 @@
         @inputText(userForm("lastName"))
         @inputText(userForm("email"))
         @inputText(userForm("isSupervisor"))
+        @inputText(userForm("password"))
+        @inputText(userForm("salt"))
 
         <input type="submit" value="Create">
 

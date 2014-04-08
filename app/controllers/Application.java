@@ -129,7 +129,7 @@ public class Application extends Controller {
     */
     public static Result getUser(String name) {
         if (UserContainer.getByUserName(name) == null) {
-        	return badRequest();
+        	return notFound();
         } else {
             return(ok(Json.toJson(UserContainer.getByUserName(name))));
         }
@@ -144,12 +144,12 @@ public class Application extends Controller {
         JsonNode json = request().body().asJson();
         String name = Json.fromJson(json, UserContainer.class).userName;
         if (UserContainer.getByUserName(name) == null) {
-        	return badRequest();
+        	return notFound();
         } else {
             if (Json.fromJson(json, UserContainer.class).password.equals(UserContainer.getByUserName(name).password)) {
                 return ok();
             } else {
-                return badRequest();
+                return notFound();
             }
         }
     }
