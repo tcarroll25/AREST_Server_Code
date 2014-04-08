@@ -88,13 +88,13 @@ public class Application extends Controller {
     /**
      * Replace user with new information in database from JSON POST request from client
      * 
-     * @return 200 OK or 404 NOT FOUND
+     * @return 200 OK or 400 BAD REQUEST
      */
     public static Result editUser() {
         JsonNode json = request().body().asJson();
-        Long id = Json.fromJson(json, UserContainer.class).id;
-        if (UserContainer.get(id) == null) {
-            return notFound();
+        String name = Json.fromJson(json, UserContainer.class).userName;
+        if (UserContainer.getByUserName(name) == null) {
+            return badRequest();
         } else {
             UserContainer.edit(Json.fromJson(json, UserContainer.class));
             return ok();
@@ -129,7 +129,7 @@ public class Application extends Controller {
     */
     public static Result getUser(String name) {
         if (UserContainer.getByUserName(name) == null) {
-        	return notFound();
+        	return badRequest();
         } else {
             return(ok(Json.toJson(UserContainer.getByUserName(name))));
         }
@@ -144,12 +144,12 @@ public class Application extends Controller {
         JsonNode json = request().body().asJson();
         String name = Json.fromJson(json, UserContainer.class).userName;
         if (UserContainer.getByUserName(name) == null) {
-        	return notFound();
+        	return badRequest();
         } else {
             if (Json.fromJson(json, UserContainer.class).password.equals(UserContainer.getByUserName(name).password)) {
                 return ok();
             } else {
-                return notFound();
+                return badRequest();
             }
         }
     }
@@ -185,7 +185,7 @@ public class Application extends Controller {
         JsonNode json = request().body().asJson();
         String name = Json.fromJson(json, UserContainer.class).userName;
         if (UserContainer.getByUserName(name) == null) {
-            return notFound();
+            return badRequest();
         } else {
             UserContainer.deleteByUserName(name);
             return ok();
