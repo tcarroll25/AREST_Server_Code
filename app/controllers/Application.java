@@ -88,7 +88,7 @@ public class Application extends Controller {
     /**
      * Replace user with new information in database from JSON POST request from client
      * 
-     * @return 200 OK
+     * @return 200 OK or 404 NOT FOUND
      */
     public static Result editUser() {
         JsonNode json = request().body().asJson();
@@ -107,7 +107,7 @@ public class Application extends Controller {
      * @param id id of user to get from database
      * @return   200 OK with JSON data of user
      */
-    public static Result getUser(Long id) {
+    public static Result getByUserId(Long id) {
     	return(ok(Json.toJson(UserContainer.get(id))));
     }
     
@@ -122,17 +122,35 @@ public class Application extends Controller {
     }
     
    /**
+    * Gets user by username from database from GET
+    * 
+    * @param name username of user to get from database
+    * @return     200 OK with JSON data of user or 400 BAD REQUEST
+    */
+    public static Result getUser(String name) {
+        if (UserContainer.getByUserName(name) == null) {
+        	return badRequest();
+        } else {
+            return(ok(Json.toJson(UserContainer.getByUserName(name))));
+        }
+    }
+    
+   /**
     * Check password of user sent by JSON POST request from client
     * 
-    * @return 200 OK or 404 NOT FOUND
+    * @return 200 OK or 400 BAD REQUEST
     */
     public static Result checkPassword() {
         JsonNode json = request().body().asJson();
-        if (Json.fromJson(json, UserContainer.class).password.equals( 
-        		UserContainer.getByUserName(Json.fromJson(json, UserContainer.class).userName).password)) {
-        	return ok();
+        String name = Json.fromJson(json, UserContainer.class).userName;
+        if (UserContainer.getByUserName(name) == null) {
+        	return badRequest();
         } else {
-        	return notFound();
+            if (Json.fromJson(json, UserContainer.class).password.equals(UserContainer.getByUserName(name).password)) {
+                return ok();
+            } else {
+                return badRequest();
+            }
         }
     }
     
