@@ -23,7 +23,7 @@ POST    /report/create              controllers.Application.createReport()
 POST    /report/edit                controllers.Application.editReport()
 POST    /report/delete              controllers.Application.deleteReport()
 POST    /report/get                 controllers.Application.getReport()
-POST    /report/getAll              controllers.Application.getAllReports()
+GET     /report/getAll              controllers.Application.getAllReports()
 POST    /report/:id/deleteID        controllers.Application.deleteReportById(id: Long)
 
 
