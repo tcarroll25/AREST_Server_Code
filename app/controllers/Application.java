@@ -102,13 +102,12 @@ public class Application extends Controller {
     }
     
     /**
-     * Gets user by id from database
+     * Gets users from database
      * 
-     * @param id id of user to get from database
-     * @return   200 OK with JSON data of user
+     * @return   200 OK with JSON data of users
      */
-    public static Result getByUserId(Long id) {
-    	return(ok(Json.toJson(UserContainer.get(id))));
+    public static Result getAllUsers() {
+    	return(ok(Json.toJson(UserContainer.all())));
     }
     
    /**
@@ -238,7 +237,7 @@ public class Application extends Controller {
         JsonNode json = request().body().asJson();
         Long id = Json.fromJson(json, Report.class).id;
         if (Report.get(id) == null) {
-            return notFound();
+            return badRequest();
         } else {
             Report.edit(Json.fromJson(json, Report.class));
             return ok();
@@ -246,13 +245,43 @@ public class Application extends Controller {
     }
     
     /**
-     * Gets report by id from database
+     * Gets report by from database from JSON POST request from client
      * 
-     * @param id id of report to get from database
-     * @return   200 OK with JSON data of report
+     * @return 200 OK with JSON data of report or 400 BAD REQUEST
      */
-    public static Result getReport(Long id) {
-    	return(ok(Json.toJson(Report.get(id))));
+    public static Result getReport() {
+        JsonNode json = request().body().asJson();
+        Long id = Json.fromJson(json, Report.class).id;
+        if (Report.get(id) == null) {
+            return badRequest();
+        } else {
+            return(ok(Json.toJson(Report.get(id))));
+        } 
+    }
+    
+    /**
+     * Gets reports from database
+     * 
+     * @return   200 OK with JSON data of reports
+     */
+    public static Result getAllReports() {
+    	return(ok(Json.toJson(Report.all())));
+    }
+    
+    /**
+     * Deletes report by from database from JSON POST request from client
+     * 
+     * @return 200 OK with JSON data of report or 400 BAD REQUEST
+     */
+    public static Result deleteReport() {
+        JsonNode json = request().body().asJson();
+        Long id = Json.fromJson(json, Report.class).id;
+        if (Report.get(id) == null) {
+            return badRequest();
+        } else {
+            Report.delete(id);
+            return ok();
+        } 
     }
 
     /**
@@ -261,7 +290,7 @@ public class Application extends Controller {
      * @param id id of report to delete
      * @return   returns report page
      */
-    public static Result deleteReport(Long id) {
+    public static Result deleteReportById(Long id) {
         Report.delete(id);
         return redirect(routes.Application.reports());
     }

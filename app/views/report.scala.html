@@ -11,7 +11,7 @@
             <li>
             	<h2>Report ID: @report.id</h2>
                 <p>Type of Abuse: @report.typeOfAbuse Description: @report.description</p>
-                <p>Filed by: @report.username, Status: @report.status, State: @report.state</p>
+                <p>Filed by: @report.username, Status: @report.status, Result: @report.result</p>
                 <h4>Reporter</h4>
                 <p>Name: @report.reporter.firstName @report.reporter.lastName,
                 Addr: @report.reporter.address,
@@ -45,7 +45,7 @@
                 Phone: @report.guardian.phoneNumber,
                 Relationship to Victim: @report.guardian.relationshipToVictim</p>
 
-                @form(routes.Application.deleteReport(report.id)) {
+                @form(routes.Application.deleteReportById(report.id)) {
                     <input type="submit" value="Delete">
                 }
             </li>
@@ -59,7 +59,7 @@
         @inputText(reportForm("typeOfAbuse"))
         @inputText(reportForm("description"))
         @inputText(reportForm("username"))
-        @inputText(reportForm("state"))
+        @inputText(reportForm("result"))
         @inputText(reportForm("status"))
         @inputText(reportForm("reporter.firstName"))
         @inputText(reportForm("reporter.lastName"))

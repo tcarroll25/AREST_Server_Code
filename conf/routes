@@ -13,15 +13,18 @@ POST    /user/create                controllers.Application.createUser()
 POST    /user/edit                  controllers.Application.editUser()
 POST    /user/delete                controllers.Application.deleteUser()
 POST    /user/get                   controllers.Application.getUser()
+GET     /user/getAll                controllers.Application.getAllUsers()
 POST    /user/:id/deleteID          controllers.Application.deleteUserById(id: Long)
 
 # Report
 GET     /report                     controllers.Application.reports()
 POST    /report                     controllers.Application.newReport()
-POST    /report/:id/delete          controllers.Application.deleteReport(id: Long)
-GET     /report/:id/get             controllers.Application.getReport(id: Long)
 POST    /report/create              controllers.Application.createReport()
 POST    /report/edit                controllers.Application.editReport()
+POST    /report/delete              controllers.Application.deleteReport()
+POST    /report/get                 controllers.Application.getReport()
+POST    /report/getAll              controllers.Application.getAllReports()
+POST    /report/:id/deleteID        controllers.Application.deleteReportById(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

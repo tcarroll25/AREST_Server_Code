@@ -27,12 +27,13 @@ create table guardian (
 
 create table report (
   id                        bigint not null,
+  date                      varchar(255),
   reporter_id               bigint,
   victim_id                 bigint,
   abuser_id                 bigint,
   guardian_id               bigint,
   username                  varchar(255),
-  state                     varchar(255),
+  result                    varchar(255),
   status                    varchar(255),
   type_of_abuse             varchar(255),
   description               varchar(255),

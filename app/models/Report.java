@@ -21,6 +21,11 @@ public class Report extends Model {
      */
     @Id
     public Long id;
+    /**
+     * date of abuse
+     */
+    @Required
+    public String date;
     
     /**
      * person who reported the abuse
@@ -54,10 +59,10 @@ public class Report extends Model {
     @Required
     public String username;
     /**
-     * current state of the report
+     * end result of the report
      */
     @Required
-    public String state;
+    public String result;
     /**
      * current status of the report
      */
@@ -69,7 +74,7 @@ public class Report extends Model {
     @Required
     public String typeOfAbuse;
     /**
-     * description of the abuse commmitted
+     * description of the abuse committed
      */
     @Required
     public String description;
