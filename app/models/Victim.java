@@ -64,6 +64,21 @@ public class Victim extends PersonInfo {
      */
     @Required
     public String awarenessOfReport;
+    /**
+     * types of abuse
+     */
+    @Required
+    public String typesOfAbuse;
+    /**
+     * frequency of abuse
+     */
+    @Required
+    public String freqOfAbuse;
+    /**
+     * date of last incident
+     */
+    @Required
+    public String dateOfLastIncident;
 
 }
 

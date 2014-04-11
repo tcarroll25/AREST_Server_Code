@@ -19,7 +19,7 @@ public class Reporter extends PersonInfo {
      * was this report mandated?
      */
     @Required
-    public Boolean mandatedBool;
+    public Boolean mandated;
     /**
      * reporter's relationship to the victim
      */

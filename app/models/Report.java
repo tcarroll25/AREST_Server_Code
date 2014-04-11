@@ -13,6 +13,10 @@ import javax.persistence.*;
  * @author Tyler Carroll
  *
  */
+/**
+ * @author dev
+ *
+ */
 @Entity
 public class Report extends Model {
 
@@ -51,7 +55,13 @@ public class Report extends Model {
     @Required
     @OneToOne(cascade=CascadeType.ALL)
     public Guardian guardian;
-
+    /**
+     * collateral contacts 
+     */
+    //@Required
+    //@OneToOne(cascade=CascadeType.ALL)
+    //public PersonInfo[] collateralContacts = new PersonInfo[5];
+    
     /* Information */
     /**
      * username of person who filed the report
@@ -72,12 +82,47 @@ public class Report extends Model {
      * type of abuse committed
      */
     @Required
-    public String typeOfAbuse;
+    public String abuseDescr;
     /**
-     * description of the abuse committed
+     * risk of victim
      */
     @Required
-    public String description;
+    public String victimRisk;
+    /**
+     * list of injuries
+     */
+    @Required
+    public String injuryList;
+    /**
+     * witnesses
+     */
+    @Required
+    public String witnesses;
+    /**
+     * relationship of caregiver
+     */
+    @Required
+    public String caregiverRel;
+    /**
+     * is an oral report filed?
+     */
+    @Required
+    public boolean isOralReportFiled;
+    /**
+     * time oral report was filed
+     */
+    @Required
+    public String oralReportFiledTime;
+    /**
+     * is this a risk to investigator?
+     */
+    @Required
+    public boolean isRiskToInvestigator;
+    /**
+     * description of risk to investigator
+     */
+    @Required
+    public String riskDescrToInvestigator;
 
     /**
      * finder to find abuse reports in database

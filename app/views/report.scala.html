@@ -10,13 +10,13 @@
         @for(report <- reports) {
             <li>
             	<h2>Report ID: @report.id</h2>
-                <p>Type of Abuse: @report.typeOfAbuse Description: @report.description</p>
+                <p>Date: @report.date</p>
                 <p>Filed by: @report.username, Status: @report.status, Result: @report.result</p>
                 <h4>Reporter</h4>
                 <p>Name: @report.reporter.firstName @report.reporter.lastName,
                 Addr: @report.reporter.address,
                 Phone: @report.reporter.phoneNumber,
-                Mandated?: @report.reporter.mandatedBool,
+                Mandated?: @report.reporter.mandated,
                 Relationship to Victim: @report.reporter.relationshipToVictim</p>
                 <h4>Victim</h4>
                 <p>Name: @report.victim.firstName @report.victim.lastName,
@@ -58,6 +58,7 @@
 
         @inputText(reportForm("typeOfAbuse"))
         @inputText(reportForm("description"))
+        @inputText(reportForm("date"))
         @inputText(reportForm("username"))
         @inputText(reportForm("result"))
         @inputText(reportForm("status"))
