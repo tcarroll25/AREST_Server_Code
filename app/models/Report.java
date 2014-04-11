@@ -13,10 +13,6 @@ import javax.persistence.*;
  * @author Tyler Carroll
  *
  */
-/**
- * @author dev
- *
- */
 @Entity
 public class Report extends Model {
 
@@ -28,37 +24,37 @@ public class Report extends Model {
     /**
      * date of abuse
      */
-    @Required
+    //@Required
     public String date;
     
     /**
      * person who reported the abuse
      */
-    @Required
+    //@Required
     @OneToOne(cascade=CascadeType.ALL)
     public Reporter reporter;
     /**
      * victim of the abuse
      */
-    @Required
+    //@Required
     @OneToOne(cascade=CascadeType.ALL)
     public Victim victim;
     /**
      * person who committed the abuse
      */
-    @Required
+    //@Required
     @OneToOne(cascade=CascadeType.ALL)
     public Abuser abuser;
     /**
      * guardian of the victim
      */
-    @Required
+    //@Required
     @OneToOne(cascade=CascadeType.ALL)
     public Guardian guardian;
     /**
      * collateral contacts 
      */
-    //@Required
+    ////@Required
     //@OneToOne(cascade=CascadeType.ALL)
     //public PersonInfo[] collateralContacts = new PersonInfo[5];
     
@@ -66,62 +62,62 @@ public class Report extends Model {
     /**
      * username of person who filed the report
      */
-    @Required
+    //@Required
     public String username;
     /**
      * end result of the report
      */
-    @Required
+    //@Required
     public String result;
     /**
      * current status of the report
      */
-    @Required
+    //@Required
     public String status;
     /**
      * type of abuse committed
      */
-    @Required
+    //@Required
     public String abuseDescr;
     /**
      * risk of victim
      */
-    @Required
+    //@Required
     public String victimRisk;
     /**
      * list of injuries
      */
-    @Required
+    //@Required
     public String injuryList;
     /**
      * witnesses
      */
-    @Required
+    //@Required
     public String witnesses;
     /**
      * relationship of caregiver
      */
-    @Required
+    //@Required
     public String caregiverRel;
     /**
      * is an oral report filed?
      */
-    @Required
+    //@Required
     public boolean isOralReportFiled;
     /**
      * time oral report was filed
      */
-    @Required
+    //@Required
     public String oralReportFiledTime;
     /**
      * is this a risk to investigator?
      */
-    @Required
+    //@Required
     public boolean isRiskToInvestigator;
     /**
      * description of risk to investigator
      */
-    @Required
+    //@Required
     public String riskDescrToInvestigator;
 
     /**
