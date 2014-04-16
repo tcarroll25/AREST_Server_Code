@@ -26,43 +26,10 @@ public class Report extends Model {
      */
     //@Required
     public String date;
-    
-    /**
-     * person who reported the abuse
-     */
-    //@Required
-    @OneToOne(cascade=CascadeType.ALL)
-    public Reporter reporter;
-    /**
-     * victim of the abuse
-     */
-    //@Required
-    @OneToOne(cascade=CascadeType.ALL)
-    public Victim victim;
-    /**
-     * person who committed the abuse
-     */
-    //@Required
-    @OneToOne(cascade=CascadeType.ALL)
-    public Abuser abuser;
-    /**
-     * guardian of the victim
-     */
-    //@Required
-    @OneToOne(cascade=CascadeType.ALL)
-    public Guardian guardian;
-    /**
-     * collateral contacts 
-     */
-    ////@Required
-    //@OneToOne(cascade=CascadeType.ALL)
-    //public PersonInfo[] collateralContacts = new PersonInfo[5];
-    
-    /* Information */
     /**
      * username of person who filed the report
      */
-    //@Required
+    @Required
     public String username;
     /**
      * end result of the report
@@ -77,12 +44,12 @@ public class Report extends Model {
     /**
      * type of abuse committed
      */
-    //@Required
+    @Required
     public String abuseDescr;
     /**
      * risk of victim
      */
-    //@Required
+    @Required
     public String victimRisk;
     /**
      * list of injuries
@@ -102,23 +69,73 @@ public class Report extends Model {
     /**
      * is an oral report filed?
      */
-    //@Required
+    @Required
     public boolean isOralReportFiled;
     /**
      * time oral report was filed
      */
-    //@Required
+    @Required
     public String oralReportFiledTime;
     /**
      * is this a risk to investigator?
      */
-    //@Required
+    @Required
     public boolean isRiskToInvestigator;
     /**
      * description of risk to investigator
      */
-    //@Required
+    @Required
     public String riskDescrToInvestigator;
+    
+    /**
+     * person who reported the abuse
+     */
+    @Required
+    @OneToOne(cascade=CascadeType.ALL)
+    public Reporter reporter;
+    /**
+     * victim of the abuse
+     */
+    @Required
+    @OneToOne(cascade=CascadeType.ALL)
+    public Victim victim;
+    /**
+     * person who committed the abuse
+     */
+    @Required
+    @OneToOne(cascade=CascadeType.ALL)
+    public Abuser abuser;
+    /**
+     * guardian of the victim
+     */
+    @Required
+    @OneToOne(cascade=CascadeType.ALL)
+    public Guardian guardian;
+    /**
+     * collateral contact one 
+     */
+    @OneToOne(cascade=CascadeType.ALL)
+    public CollateralContact collateralContact1;
+    /**
+     * collateral contact two 
+     */
+    @OneToOne(cascade=CascadeType.ALL)
+    public CollateralContact collateralContact2;
+    /**
+     * collateral contact three 
+     */
+    @OneToOne(cascade=CascadeType.ALL)
+    public CollateralContact collateralContact3;
+    /**
+     * collateral contact four
+     */
+    @OneToOne(cascade=CascadeType.ALL)
+    public CollateralContact collateralContact4;
+    /**
+     * collateral contact five
+     */
+    @OneToOne(cascade=CascadeType.ALL)
+    public CollateralContact collateralContact5;
 
     /**
      * finder to find abuse reports in database

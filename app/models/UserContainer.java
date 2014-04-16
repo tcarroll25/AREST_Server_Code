@@ -56,6 +56,12 @@ public class UserContainer extends Model {
     public boolean isSupervisor;
 
     /**
+     * is this the first time a user logged on?
+     */
+    @Required
+    public boolean firstLogon;
+
+    /**
      * password of user
      */
     @Required

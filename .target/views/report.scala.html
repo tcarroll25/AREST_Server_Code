@@ -3,15 +3,27 @@
 @import helper._
 
 @main("AREST") {
+    
+    <h2>Go to users</h2>
 
-    <h1>@reports.size() report(s)</h1>
+    @form(routes.Application.users()) {
+
+        <input type="submit" value="Users">
+
+    }
+
+    <h2>@reports.size() report(s)</h2>
 
     <ul>
         @for(report <- reports) {
             <li>
-            	<h2>Report ID: @report.id</h2>
+            	<h3>Report ID (Public Log Number): @report.id</h3>
                 <p>Date: @report.date</p>
                 <p>Filed by: @report.username, Status: @report.status, Result: @report.result</p>
+                <p>Abuse Descr: @report.abuseDescr, Victim Risk: @report.victimRisk</p>
+                <p>Witnesses: @report.witnesses, Caregiver Relationship: @report.caregiverRel</p>
+                <p>Was an oral report filed?: @report.isOralReportFiled, Oral report filed at: @report.oralReportFiledTime</p>
+                <p>Is there a risk to the investigator: @report.isRiskToInvestigator, Risk description: @report.riskDescrToInvestigator</p>
                 <h4>Reporter</h4>
                 <p>Name: @report.reporter.firstName @report.reporter.lastName,
                 Addr: @report.reporter.address,
@@ -31,7 +43,10 @@
                 Currently Served By: @report.victim.currentlyServedBy,
                 Type of Service: @report.victim.typeOfService,
                 Ethnicity: @report.victim.ethnicity,
-                Awareness of Report: @report.victim.awarenessOfReport</p>
+                Awareness of Report: @report.victim.awarenessOfReport,
+                Types of Abuse: @report.victim.typesOfAbuse,
+                Freq of Abuse: @report.victim.freqOfAbuse,
+                Date of Last Incident: @report.victim.dateOfLastIncident</p>
                 <h4>Abuser</h4>
                 <p>Name: @report.abuser.firstName @report.abuser.lastName,
                 Addr: @report.abuser.address,
@@ -44,6 +59,26 @@
                 Addr: @report.guardian.address,
                 Phone: @report.guardian.phoneNumber,
                 Relationship to Victim: @report.guardian.relationshipToVictim</p>
+                <h4>Collateral Contact One</h4>
+                <p>Name: @report.collateralContact1.firstName @report.collateralContact1.lastName,
+                Addr: @report.collateralContact1.address,
+                Phone: @report.collateralContact1.phoneNumber,
+                <h4>Collateral Contact Two</h4>
+                <p>Name: @report.collateralContact2.firstName @report.collateralContact2.lastName,
+                Addr: @report.collateralContact2.address,
+                Phone: @report.collateralContact2.phoneNumber,
+                <h4>Collateral Contact Three</h4>
+                <p>Name: @report.collateralContact3.firstName @report.collateralContact3.lastName,
+                Addr: @report.collateralContact3.address,
+                Phone: @report.collateralContact3.phoneNumber,
+                <h4>Collateral Contact Four</h4>
+                <p>Name: @report.collateralContact4.firstName @report.collateralContact4.lastName,
+                Addr: @report.collateralContact4.address,
+                Phone: @report.collateralContact4.phoneNumber,
+                <h4>Collateral Contact Five</h4>
+                <p>Name: @report.collateralContact5.firstName @report.collateralContact5.lastName,
+                Addr: @report.collateralContact5.address,
+                Phone: @report.collateralContact5.phoneNumber,
 
                 @form(routes.Application.deleteReportById(report.id)) {
                     <input type="submit" value="Delete">
@@ -56,12 +91,19 @@
 
     @form(routes.Application.newReport()) {
 
-        @inputText(reportForm("typeOfAbuse"))
-        @inputText(reportForm("abuseDescr"))
         @inputText(reportForm("date"))
         @inputText(reportForm("username"))
         @inputText(reportForm("result"))
         @inputText(reportForm("status"))
+        @inputText(reportForm("abuseDescr"))
+        @inputText(reportForm("victimRisk"))
+        @inputText(reportForm("injuryList"))
+        @inputText(reportForm("witnesses"))
+        @inputText(reportForm("caregiverRel"))
+        @inputText(reportForm("isOralReportFiled"))
+        @inputText(reportForm("oralReportFiledTime"))
+        @inputText(reportForm("isRiskToInvestigator"))
+        @inputText(reportForm("riskDescrToInvestigator"))
         @inputText(reportForm("reporter.firstName"))
         @inputText(reportForm("reporter.lastName"))
         @inputText(reportForm("reporter.address"))
@@ -82,6 +124,9 @@
         @inputText(reportForm("victim.typeOfService"))
         @inputText(reportForm("victim.ethnicity"))
         @inputText(reportForm("victim.awarenessOfReport"))
+        @inputText(reportForm("victim.typesOfAbuse"))
+        @inputText(reportForm("victim.freqOfAbuse"))
+        @inputText(reportForm("victim.dateOfLastIncident"))
         @inputText(reportForm("abuser.firstName"))
         @inputText(reportForm("abuser.lastName"))
         @inputText(reportForm("abuser.address"))
@@ -94,16 +139,28 @@
         @inputText(reportForm("guardian.address"))
         @inputText(reportForm("guardian.phoneNumber"))
         @inputText(reportForm("guardian.relationshipToVictim"))
+        @inputText(reportForm("collateralContact1.firstName"))
+        @inputText(reportForm("collateralContact1.lastName"))
+        @inputText(reportForm("collateralContact1.address"))
+        @inputText(reportForm("collateralContact1.phoneNumber"))
+        @inputText(reportForm("collateralContact2.firstName"))
+        @inputText(reportForm("collateralContact2.lastName"))
+        @inputText(reportForm("collateralContact2.address"))
+        @inputText(reportForm("collateralContact2.phoneNumber"))
+        @inputText(reportForm("collateralContact3.firstName"))
+        @inputText(reportForm("collateralContact3.lastName"))
+        @inputText(reportForm("collateralContact3.address"))
+        @inputText(reportForm("collateralContact3.phoneNumber"))
+        @inputText(reportForm("collateralContact4.firstName"))
+        @inputText(reportForm("collateralContact4.lastName"))
+        @inputText(reportForm("collateralContact4.address"))
+        @inputText(reportForm("collateralContact4.phoneNumber"))
+        @inputText(reportForm("collateralContact5.firstName"))
+        @inputText(reportForm("collateralContact5.lastName"))
+        @inputText(reportForm("collateralContact5.address"))
+        @inputText(reportForm("collateralContact5.phoneNumber"))
 
         <input type="submit" value="Create">
-
-    }
-    
-    <h2>Go to users</h2>
-
-    @form(routes.Application.users()) {
-
-        <input type="submit" value="Users">
 
     }
 

@@ -15,6 +15,15 @@ create table abuser (
   constraint pk_abuser primary key (id))
 ;
 
+create table collateral_contact (
+  id                        bigint not null,
+  first_name                varchar(255),
+  last_name                 varchar(255),
+  address                   varchar(255),
+  phone_number              varchar(255),
+  constraint pk_collateral_contact primary key (id))
+;
+
 create table guardian (
   id                        bigint not null,
   first_name                varchar(255),
@@ -28,10 +37,6 @@ create table guardian (
 create table report (
   id                        bigint not null,
   date                      varchar(255),
-  reporter_id               bigint,
-  victim_id                 bigint,
-  abuser_id                 bigint,
-  guardian_id               bigint,
   username                  varchar(255),
   result                    varchar(255),
   status                    varchar(255),
@@ -44,6 +49,15 @@ create table report (
   oral_report_filed_time    varchar(255),
   is_risk_to_investigator   boolean,
   risk_descr_to_investigator varchar(255),
+  reporter_id               bigint,
+  victim_id                 bigint,
+  abuser_id                 bigint,
+  guardian_id               bigint,
+  collateral_contact1_id    bigint,
+  collateral_contact2_id    bigint,
+  collateral_contact3_id    bigint,
+  collateral_contact4_id    bigint,
+  collateral_contact5_id    bigint,
   constraint pk_report primary key (id))
 ;
 
@@ -65,6 +79,7 @@ create table user_container (
   last_name                 varchar(255),
   email                     varchar(255),
   is_supervisor             boolean,
+  first_logon               boolean,
   password                  varchar(255),
   salt                      integer,
   constraint pk_user_container primary key (id))
@@ -94,6 +109,8 @@ create table victim (
 
 create sequence abuser_seq;
 
+create sequence collateral_contact_seq;
+
 create sequence guardian_seq;
 
 create sequence report_seq;
@@ -112,6 +129,16 @@ alter table report add constraint fk_report_abuser_3 foreign key (abuser_id) ref
 create index ix_report_abuser_3 on report (abuser_id);
 alter table report add constraint fk_report_guardian_4 foreign key (guardian_id) references guardian (id) on delete restrict on update restrict;
 create index ix_report_guardian_4 on report (guardian_id);
+alter table report add constraint fk_report_collateralContact1_5 foreign key (collateral_contact1_id) references collateral_contact (id) on delete restrict on update restrict;
+create index ix_report_collateralContact1_5 on report (collateral_contact1_id);
+alter table report add constraint fk_report_collateralContact2_6 foreign key (collateral_contact2_id) references collateral_contact (id) on delete restrict on update restrict;
+create index ix_report_collateralContact2_6 on report (collateral_contact2_id);
+alter table report add constraint fk_report_collateralContact3_7 foreign key (collateral_contact3_id) references collateral_contact (id) on delete restrict on update restrict;
+create index ix_report_collateralContact3_7 on report (collateral_contact3_id);
+alter table report add constraint fk_report_collateralContact4_8 foreign key (collateral_contact4_id) references collateral_contact (id) on delete restrict on update restrict;
+create index ix_report_collateralContact4_8 on report (collateral_contact4_id);
+alter table report add constraint fk_report_collateralContact5_9 foreign key (collateral_contact5_id) references collateral_contact (id) on delete restrict on update restrict;
+create index ix_report_collateralContact5_9 on report (collateral_contact5_id);
 
 
 
@@ -120,6 +147,8 @@ create index ix_report_guardian_4 on report (guardian_id);
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists abuser;
+
+drop table if exists collateral_contact;
 
 drop table if exists guardian;
 
@@ -134,6 +163,8 @@ drop table if exists victim;
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists abuser_seq;
+
+drop sequence if exists collateral_contact_seq;
 
 drop sequence if exists guardian_seq;
 

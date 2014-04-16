@@ -3,8 +3,16 @@
 @import helper._
 
 @main("AREST") {
+    
+    <h2>Go to reports</h2>
 
-    <h1>@users.size() user(s)</h1>
+    @form(routes.Application.reports()) {
+
+        <input type="submit" value="Reports">
+
+    }
+
+    <h2>@users.size() user(s)</h2>
 
     <ul>
         @for(user <- users) {
@@ -40,14 +48,6 @@
         @inputText(userForm("salt"))
 
         <input type="submit" value="Create">
-
-    }
-    
-    <h2>Go to reports</h2>
-
-    @form(routes.Application.reports()) {
-
-        <input type="submit" value="Reports">
 
     }
 }
