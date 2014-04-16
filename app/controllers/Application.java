@@ -220,12 +220,12 @@ public class Application extends Controller {
     /**
      * Creates new report in database from JSON POST request from client
      * 
-     * @return 200 OK
+     * @return 200 OK with JSON data of report just created including ID
      */
     public static Result createReport() {
         JsonNode json = request().body().asJson();
-        Report.create(Json.fromJson(json, Report.class));
-        return ok();
+        Long id = Report.create(Json.fromJson(json, Report.class));
+        return(ok(Json.toJson(Report.get(id))));
     }
     
     /**
