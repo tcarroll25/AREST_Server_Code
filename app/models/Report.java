@@ -155,6 +155,8 @@ public class Report extends Model {
      * Creates a report in database
      * 
      * @param report report to create in database
+     * 
+     * @return returns id of report just created
      */
     public static Long create(Report report) {
         report.save();
