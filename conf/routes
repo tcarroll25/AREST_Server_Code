@@ -24,6 +24,7 @@ POST    /report/edit                controllers.Application.editReport()
 POST    /report/delete              controllers.Application.deleteReport()
 POST    /report/get                 controllers.Application.getReport()
 GET     /report/getAll              controllers.Application.getAllReports()
+POST    /report/getAll              controllers.Application.getAllReportsByName()
 POST    /report/:id/deleteID        controllers.Application.deleteReportById(id: Long)
 
 

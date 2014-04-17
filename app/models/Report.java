@@ -152,6 +152,16 @@ public class Report extends Model {
     }
 
     /**
+     * Gets all reports filed by a user by username from database
+     * 
+     * @param userName username that filed reports to get
+     * @return         returns list of reports by that user from database
+     */
+    public static List<Report> allByUserName(String userName) {
+        return find.where().eq("username", userName).findList();
+    }
+
+    /**
      * Creates a report in database
      * 
      * @param report report to create in database

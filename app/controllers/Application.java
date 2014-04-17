@@ -268,6 +268,21 @@ public class Application extends Controller {
     	return(ok(Json.toJson(Report.all())));
     }
     
+   /**
+    * Gets all reports filed by a user by username from database from POST
+    * 
+    * @return     200 OK with JSON data of reports or 400 BAD REQUEST
+    */
+    public static Result getAllReportsByName() {
+        JsonNode json = request().body().asJson();
+        String name = Json.fromJson(json, Report.class).username;
+        if (UserContainer.getByUserName(name) == null) {
+        	return badRequest();
+        } else {
+            return(ok(Json.toJson(Report.allByUserName(name))));
+        }
+    }
+    
     /**
      * Deletes report by from database from JSON POST request from client
      * 
