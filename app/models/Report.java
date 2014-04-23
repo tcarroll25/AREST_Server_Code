@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import play.data.validation.Constraints.*;
 import play.db.ebean.*;
@@ -169,6 +170,10 @@ public class Report extends Model {
      * @return returns id of report just created
      */
     public static Long create(Report report) {
+    	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        report.date = strDate;
         report.save();
         return report.id;
     }
